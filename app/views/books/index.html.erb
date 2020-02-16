@@ -1,20 +1,36 @@
-<h1>Countries#index</h1>
-<table>
-  <thead>
-  <tr>
-    <th>Flag</th>
-    <th>Name</th>
-    <th>Capital</th>
-    <th>Region</th>
-  </tr>
-  </thead>
-  <tbody>
-  <%# @result.each do |list|  %>
-<!--    <h4><%#= list['title'] %></h4>-->
-<!--    <h4><%#= list['author'] %></h4>-->
+<header>
+  <div class="container">
+    <h1>Best-seller List</h1>
+  </div>
+</header>
+<!--<div>-->
+  <%# @list_names.each do |list_name| %>
+<!--    <p><%#= list_name['list_name_encoded'] %></p>-->
   <%# end %>
-  <%#= @list['results']['books']%>
-  <%= @list %>
+<!--</div>-->
+<% @lists.each do |list| %>
+<table>
+    <div class="book container">
+      <div class="row">
+          <div class="col-sm-3 col-md-1 col-lg-1">
+            <p class="rank-this-week"><%= list['rank'] %></p>
+          </div>
+          <div class="col-sm-7 col-md-3 col-lg-3">
+            <figure class="figure">
+              <%= image_tag(list['book_image'], class: "img-fluid") %>
+              <!--<figcaption class="figure-caption text-center"><%#= list['weeks_on_list'] %>&nbsp;weeks on list</figcaption>-->
+            </figure>
+          </div>
+          <div class="book-content col-sm-12 col-md-8 col-lg-8">
+            <p class="title"><%= list['title'] %></p>
+            <p class="author"><%= list['author'] %></p>
+            <p class="publisher"><%= list['publisher'] %></p>
+            <p class="description"><%= list['description'] %></p>
+            <p class="weeks-on-list"><%= list['weeks_on_list'] %>&nbsp;weeks on list</p>
 
-  </tbody>
+            <%= link_to "See more details", book_path(list['title']) %>
+          </div>
+      </div>
+    </div>
 </table>
+<% end %>
