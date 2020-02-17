@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
   def index
-    @lists = Book.list['results']['books']
-
+    @list_name = params[:genre] || 'hardcover-nonfiction'
+    @lists = Book.list(@list_name)['results']['books']
   end
+
   def show
     @query = params[:id].split('=')
     @search_title = @query[0] || 'Becoming'
