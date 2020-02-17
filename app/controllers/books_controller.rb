@@ -1,20 +1,17 @@
 class BooksController < ApplicationController
   def index
-    #@search_term = params[:name] || 'can'
-      #@all = Book.all
-      #@countries = Book.search(@search_term)
     @lists = Book.list['results']['books']
-    @lists.each do |list|
-      @title = list['title']
-      @author = list['author']
-      @publisher = list['publisher']
-      @description = list['description']
-      @cover = list['book_image']
-    end
+
   end
   def show
-    @search_title = params[:id] || 'Becoming'
-    @book = Book.find(@search_title)
+    @query = params[:id].split('=')
+    @search_title = @query[0] || 'Becoming'
+    @author = @query[1]
+    @publisher = @query[2]
+    @book = Book.search(@search_title)
     @reviews = @book['results']
+    if @reviews.length == 0
+      @blank_message = 'There are currently no reviews for this book. Please try another book.'
+    end
   end
 end

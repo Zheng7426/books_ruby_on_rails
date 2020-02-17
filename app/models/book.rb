@@ -6,10 +6,9 @@ class Book
 
   def self.list
     get "/lists/current/hardcover-nonfiction.json?api-key=GSqc6kSSWII0zYQDPyxAohKA149kROGe"
-
   end
 
-  def self.find(title)
+  def self.search(title)
     get "/reviews.json?title=#{title}"
   end
 

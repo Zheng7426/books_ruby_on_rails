@@ -1,17 +1,27 @@
-<% @reviews.each do |review| %>
+
+<header>
   <div class="container">
+    <h1>Reviews</h1>
+  </div>
+</header>
+<div class="container">
     <div class="book">
-      <p class="title"><%= review['book_title'] %></p>
-      <p class="author"><%= review['book_author'] %></p>
+      <p class="title">Title: <%= @search_title %></p>
+      <p class="author">Author: <%= @author %></p>
+      <p class="publisher">Publisher: <%= @publisher %></p>
+      <p><%= @blank_message %></p>
     </div>
-
-
     <div class="reviews">
+      <% @reviews.each do |review| %>
       <div class="review">
         <p class="author">Reviewed by: <%= review['byline'] %></p>
         <p class="comment"><%= review['summary'] %></p>
       </div>
+      <% end %>
     </div>
-  </div>
+</div>
+<!--<p><%#= params[:id] %></p>-->
+<!--<p><%#= @search_title %></p>-->
 
-<% end %>
+
+
