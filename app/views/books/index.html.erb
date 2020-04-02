@@ -20,6 +20,7 @@
             <p class="title"><%= list['title'] %></p>
             <p class="author"><%= list['author'] %></p>
             <p class="description"><%= list['description'] %></p>
+            <p class="description"><%= list['isbns'][1] %></p>
             <p class="weeks-on-list"><%= list['weeks_on_list'] %>&nbsp;weeks on list</p>
 
             <%= link_to "See all reviews", book_path(list['title']+'='+list['author']+'='+list['publisher'].gsub('.', '')) %>
